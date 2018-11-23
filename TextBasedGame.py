@@ -1,5 +1,11 @@
 GameEnded = False
-
+class Move(object):
+    def __init__(self,direction):
+        self.direction = direction;
+    def GetDirection(self,direction):
+        self.direciton = direciton;
+        return direction
+        
 def InputCheck(Input):
     AvaliableCommands = ["move", "check", "use" , "talk","quit"]
     Command = Input.split()
@@ -33,7 +39,7 @@ def InputCheck(Input):
             else:
                 print("Unknown Command")
 
-        
+
 def Move(word1,word2):
     print("Moving Works")
 
