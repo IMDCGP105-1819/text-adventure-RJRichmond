@@ -1,12 +1,13 @@
 class Room(object):
-    def __init__(self,items,position,exits,description):
+    def __init__(self,items,positionx,positiony,exits,description):
         self.items = items;
-        self.position = position;
+        self.positionx = positionx;
+        self.positiony = positiony;
         self.exits = exits;
         self.description = description;
 
     def __str__(self):
-        RoomEnterDescription = ("You are "+ self.description)
+        RoomEnterDescription = ("You are"+ self.description)
         return str(RoomEnterDescription)
 
     def RoomDescription(self):
@@ -14,8 +15,9 @@ class Room(object):
         return str(Description)
 
 class Character(object):
-    def __init__(self, itemsHeld,position):
+    def __init__(self, itemsHeld,positionx,positiony):
         self.itemsHeld = itemsHeld;
-        self.position = position;
+        self.positionx = positionx;
+        self.positiony = positiony;
     def __str__(self):
         return str("Check you pockets to find : ",itemsHeld)
