@@ -4,7 +4,7 @@ from StoryAndDescriptions import *
 GameEnded = False
 Rooms = []
 #x 1 east -1 west y 1 north -1 south
-Rooms.append(Room([""],0,0,[0,1],StartingRoomDescription)) # Starting room
+Rooms.append(Room([""],0,0,[[0,1]],StartingRoomDescription)) # Starting room
 Rooms.append(Room([""],0,1,[[-1,1],[0,0]],PorchDescription)) # Porch
 Rooms.append(Room([""],-1,1,[[0,1],[-1,2]],NewRoomDescription))
 
@@ -76,6 +76,7 @@ def Move(word1,word2):
         if (str(CharacterPosition) in str(CurrentRoom.exits)):
             print("happens")
             for rooms in CurrentRoom.exits:
+                print(CurrentRoom.exits[0])
                 if (str(CharacterPosition) == str(CurrentRoom.exits[0])) or (str(CharacterPosition) == str(CurrentRoom.exits[1])):
                     CurrentRoom = TheRoom(Character.positionx,Character.positiony)
                     print("You move to the",word2)
@@ -84,6 +85,7 @@ def Move(word1,word2):
                 else:
                     print("You cannot move in this direction")
         else:
+            print("You cannot move in this direction")
             Character.positionx = CurrentRoom.positionx
             Character.positiony = CurrentRoom.positiony
     else:

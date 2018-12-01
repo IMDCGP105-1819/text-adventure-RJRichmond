@@ -23,6 +23,6 @@ You pick up a picture which was sitting on the sit, you wipe away the dust to fi
 the picture has yellowed with age.
 """
 
-NewRoomDescription """
+NewRoomDescription = """
 Placeholder
 """
