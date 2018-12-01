@@ -20,4 +20,15 @@ class Character(object):
         self.positionx = positionx;
         self.positiony = positiony;
     def __str__(self):
-        return str("Check you pockets to find : ",itemsHeld)
+        ItemNames = ""
+        for i in self.itemsHeld:
+            ItemNames += str(i.name + "")
+        return ("Check you pockets to find : "+ItemNames)
+
+class Item(object):
+    def __init__(self,name,itemDesc,Use):
+        self.name = name;
+        self.itemDesc = itemDesc;
+        self.Use = Use;
+    def __str__(self):
+        return ("You picked up "+self.name)

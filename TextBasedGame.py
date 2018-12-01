@@ -4,9 +4,9 @@ from StoryAndDescriptions import *
 GameEnded = False
 Rooms = []
 #x 1 east -1 west y 1 north -1 south
-Rooms.append(Room([""],0,0,[[0,1]],StartingRoomDescription)) # Starting room
-Rooms.append(Room([""],0,1,[[-1,1],[0,0]],PorchDescription)) # Porch
-Rooms.append(Room([""],-1,1,[[0,1],[-1,2]],NewRoomDescription))
+Rooms.append(Room([],0,0,[[0,1]],StartingRoomDescription)) # Starting room
+Rooms.append(Room([Item("picture",PictureDescription,PictureUse)],0,1,[[-1,1],[0,0]],PorchDescription)) # Porch
+Rooms.append(Room([],-1,1,[[0,1],[-1,2]],NewRoomDescription)) # Kitchen
 
 def InputCheck(Input):
     CurrentRoom = TheRoom(Character.positionx,Character.positiony)
@@ -42,10 +42,17 @@ def InputCheck(Input):
                     if word2 == "room":
                         print(CurrentRoom)
                         break
-                    elif word2 == Character.itemsHeld():
+                    elif word2 in Character.itemsHeld():
                         print("Placeholder")
                     else:
                         print("You cannot check this!")
+
+                elif word1 == "pickup":
+                    if str(word2) in str(CurrentRoom.items[0]):
+                        Character.itemsHeld.append(CurrentRoom.items[0])
+                        print ("Works")
+                        print("You have picked up " + CurrentRoom.items[0].name)
+                        break
 
                 elif (word1 == "quit") or (word2 == "quit"):
                     GameEnded = True
