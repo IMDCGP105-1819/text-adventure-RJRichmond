@@ -24,7 +24,7 @@ def InputCheck(Input):
                     break
                 elif word1 == "check":
                     print (CurrentRoom)
-
+                    break
                 elif word1 == "quit":
                     GameEnded = True
                     break
@@ -39,9 +39,22 @@ def InputCheck(Input):
                     Move(word1,word2)
                     break
                 elif word1 == "check":
+                    print(Character.ItemCheck())
                     if word2 == "room":
                         print(CurrentRoom)
                         break
+                    elif word2 == "inv":
+                        print("This is happening")
+                        print(Character)
+                        break
+                    elif word2 in Character.ItemCheck():
+                        print("This is checking properly")
+                        ItemCheck(word2);
+                        break
+                    else:
+                        print("You cannot check this!")
+                        break
+
                 elif word1 == "pickup":
                     if str(word2) in str(CurrentRoom.items[0]):
                         Character.itemsHeld.append(CurrentRoom.items[0])
@@ -102,9 +115,18 @@ def TheRoom(positionx,positiony):
         if (room.positionx == Character.positionx) and (room.positiony == Character.positiony):
             return room
 
+def ItemCheck(word2):
+    for i in Character.itemsHeld:
+        print("item got")
+        if (word2 == str(i.name)):
+            print ("item found")
+            print (i.itemDesc)
+        else:
+            print("not the right item")
+
 
 print(StartingStory)
-Character = Character([],0,0)
+Character = Character([Item("cat",PictureUse,PictureUse)],0,0)
 CharacterPosition = [0,0]
 
 while (GameEnded == False):

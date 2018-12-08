@@ -28,9 +28,11 @@ class Character(object):
         Itemlist = []
         ItemNames = ""
         for i in self.itemsHeld:
-            ItemNames += str(i.name + " ")
-        Itemlist += ItemNames
-        return ItemNames
+            ItemNames = ""
+            ItemNames += str(i.name)
+            print(ItemNames)
+            Itemlist.append(ItemNames)
+        return Itemlist
 
 class Item(object):
     def __init__(self,name,itemDesc,Use):
