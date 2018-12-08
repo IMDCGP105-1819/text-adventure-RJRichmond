@@ -16,7 +16,7 @@ it looks as no one has been here in generations as nature has taken its toll on 
 """
 
 PorchDescription = """ now inside of the building you still can't make out what the purpose of the building was,
-only that you were right about it being uninhabitated, there is shattered glass on the floor and the thick layers
+only that you were right about it being uninhabitated, there is shattered glass on the floor and thick layers
 of dust blanketing everything. You notice a picture on the shelf.
 """
 

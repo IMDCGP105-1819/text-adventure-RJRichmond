@@ -22,8 +22,15 @@ class Character(object):
     def __str__(self):
         ItemNames = ""
         for i in self.itemsHeld:
-            ItemNames += str(i.name + "")
+            ItemNames += str(i.name + " ")
         return ("Check you pockets to find : "+ItemNames)
+    def ItemCheck(self):
+        Itemlist = []
+        ItemNames = ""
+        for i in self.itemsHeld:
+            ItemNames += str(i.name + " ")
+        Itemlist += ItemNames
+        return ItemNames
 
 class Item(object):
     def __init__(self,name,itemDesc,Use):

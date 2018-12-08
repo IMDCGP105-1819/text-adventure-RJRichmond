@@ -4,9 +4,9 @@ from StoryAndDescriptions import *
 GameEnded = False
 Rooms = []
 #x 1 east -1 west y 1 north -1 south
-Rooms.append(Room([],0,0,[[0,1]],StartingRoomDescription)) # Starting room
-Rooms.append(Room([Item("picture",PictureDescription,PictureUse)],0,1,[[-1,1],[0,0]],PorchDescription)) # Porch
-Rooms.append(Room([],-1,1,[[0,1],[-1,2]],NewRoomDescription)) # Kitchen
+Rooms.append(Room([""],0,0,[[0,1]],StartingRoomDescription)) # Starting room
+Rooms.append(Room([Item("picture",PictureDescription,PictureUse),""],0,1,[[-1,1],[0,0]],PorchDescription)) # Porch
+Rooms.append(Room([""],-1,1,[[0,1],[-1,2]],NewRoomDescription)) # Kitchen
 
 def InputCheck(Input):
     CurrentRoom = TheRoom(Character.positionx,Character.positiony)
@@ -42,16 +42,15 @@ def InputCheck(Input):
                     if word2 == "room":
                         print(CurrentRoom)
                         break
-                    elif word2 in Character.itemsHeld():
-                        print("Placeholder")
-                    else:
-                        print("You cannot check this!")
-
                 elif word1 == "pickup":
                     if str(word2) in str(CurrentRoom.items[0]):
                         Character.itemsHeld.append(CurrentRoom.items[0])
                         print ("Works")
-                        print("You have picked up " + CurrentRoom.items[0].name)
+                        print("You have picked up a " + CurrentRoom.items[0].name)
+                        CurrentRoom.items.remove(CurrentRoom.items[0])
+                        break
+                    else:
+                        print("You cannot pick this up!")
                         break
 
                 elif (word1 == "quit") or (word2 == "quit"):
@@ -60,7 +59,7 @@ def InputCheck(Input):
             else:
                 print("Unknown Command")
         else:
-            print("Please only enter 1 - 2 words")
+            print("Please only enter 1 - 2 words. Enter help to see avaliable commands")
 
 def Move(word1,word2):
     Directions = ["north","n","east","e","south","s","west","w"]
@@ -102,6 +101,7 @@ def TheRoom(positionx,positiony):
     for room in Rooms:
         if (room.positionx == Character.positionx) and (room.positiony == Character.positiony):
             return room
+
 
 print(StartingStory)
 Character = Character([],0,0)
