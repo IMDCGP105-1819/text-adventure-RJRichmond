@@ -4,9 +4,9 @@ from StoryAndDescriptions import *
 GameEnded = False
 Rooms = []
 #x 1 east -1 west y 1 north -1 south
-Rooms.append(Room([""],0,0,[[0,1]],StartingRoomDescription)) # Starting room
-Rooms.append(Room([Item("picture",PictureDescription,PictureUse),""],0,1,[[-1,1],[0,0]],PorchDescription)) # Porch
-Rooms.append(Room([""],-1,1,[[0,1],[-1,2]],NewRoomDescription)) # Kitchen
+Rooms.append(Room([Item("",Placeholder,Placeholder)],0,0,[[0,1]],StartingRoomDescription)) # Starting room
+Rooms.append(Room([Item("picture",PictureDescription,PictureUse),Item("",Placeholder,Placeholder)],0,1,[[-1,1],[0,0]],PorchDescription)) # Porch
+Rooms.append(Room([Item("",Placeholder,Placeholder)],-1,1,[[0,1],[-1,2]],NewRoomDescription)) # Kitchen
 
 def InputCheck(Input):
     CurrentRoom = TheRoom(Character.positionx,Character.positiony)
@@ -69,7 +69,8 @@ def InputCheck(Input):
                     if word2 in Character.ItemCheck():
                         print("Dropping an item")
                         ItemDrop(word2);
-
+                        break
+                        
                 elif (word1 == "quit") or (word2 == "quit"):
                     GameEnded = True
                     break
@@ -129,10 +130,22 @@ def ItemCheck(word2):
             print("not the right item")
 
 def ItemDrop(word2):
+    CurrentRoom = TheRoom(Character.positionx,Character.positiony)
     print(CurrentRoom.ItemsInRoom())
+    for i in Character.itemsHeld:
+        print("item got")
+        if (word2 == str(i.name)):
+            print ("item found")
+            CurrentRoom.items.append(i)
+            print("You have dropped up a " + i.name)
+            Character.itemsHeld.remove(i)
+            print(CurrentRoom.ItemsInRoom())
+
+        else:
+            print("not the right item")
 
 print(StartingStory)
-Character = Character([Item("cat",PictureUse,PictureUse)],0,0)
+Character = Character([Item("",Placeholder,Placeholder)],0,0)
 CharacterPosition = [0,0]
 
 while (GameEnded == False):
