@@ -14,6 +14,15 @@ class Room(object):
         Description = self.description
         return str(Description)
 
+    def ItemsInRoom(self):
+        Itemlist = []
+        ItemNames = ""
+        for i in self.items:
+            ItemNames = ""
+            ItemNames += str(i.name)
+            print(ItemNames)
+            Itemlist.append(ItemNames)
+        return Itemlist
 class Character(object):
     def __init__(self, itemsHeld,positionx,positiony):
         self.itemsHeld = itemsHeld;

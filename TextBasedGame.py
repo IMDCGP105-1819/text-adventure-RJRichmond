@@ -10,7 +10,7 @@ Rooms.append(Room([""],-1,1,[[0,1],[-1,2]],NewRoomDescription)) # Kitchen
 
 def InputCheck(Input):
     CurrentRoom = TheRoom(Character.positionx,Character.positiony)
-    AvaliableCommands = ["move", "check", "use", "pickup", "quit"]
+    AvaliableCommands = ["move", "check", "use", "pickup","drop", "quit"]
     Command = Input.split()
     print(Command)
     for i in Command:
@@ -68,6 +68,7 @@ def InputCheck(Input):
                 elif word1 == "drop":
                     if word2 in Character.ItemCheck():
                         print("Dropping an item")
+                        ItemDrop(word2);
 
                 elif (word1 == "quit") or (word2 == "quit"):
                     GameEnded = True
@@ -127,6 +128,8 @@ def ItemCheck(word2):
         else:
             print("not the right item")
 
+def ItemDrop(word2):
+    print(CurrentRoom.ItemsInRoom())
 
 print(StartingStory)
 Character = Character([Item("cat",PictureUse,PictureUse)],0,0)
