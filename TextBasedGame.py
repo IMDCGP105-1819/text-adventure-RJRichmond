@@ -65,6 +65,9 @@ def InputCheck(Input):
                     else:
                         print("You cannot pick this up!")
                         break
+                elif word1 == "drop":
+                    if word2 in Character.ItemCheck():
+                        print("Dropping an item")
 
                 elif (word1 == "quit") or (word2 == "quit"):
                     GameEnded = True
