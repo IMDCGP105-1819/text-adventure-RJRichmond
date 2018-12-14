@@ -23,6 +23,7 @@ class Room(object):
             print(ItemNames)
             Itemlist.append(ItemNames)
         return Itemlist
+
 class Character(object):
     def __init__(self, itemsHeld,positionx,positiony):
         self.itemsHeld = itemsHeld;

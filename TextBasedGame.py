@@ -25,6 +25,12 @@ def InputCheck(Input):
                 elif word1 == "check":
                     print (CurrentRoom)
                     break
+                elif word1 == "drop":
+                    word2 = Input(str("What do you want to drop?"))
+                    if word2 in Character.ItemCheck():
+                        print("Dropping an item")
+                        ItemDrop(word2);
+                        break
                 elif word1 == "quit":
                     GameEnded = True
                     break
@@ -35,6 +41,7 @@ def InputCheck(Input):
             word1 = (Command[0])
             word2 = (Command[1])
             if (word1 in AvaliableCommands) or (word2 in AvaliableCommands):
+                print(CurrentRoom.ItemsInRoom())
                 if (word1 == "move") or (word2 == "move"):
                     Move(word1,word2)
                     break
@@ -56,26 +63,32 @@ def InputCheck(Input):
                         break
 
                 elif word1 == "pickup":
-                    if str(word2) in str(CurrentRoom.items[0]):
-                        Character.itemsHeld.append(CurrentRoom.items[0])
-                        print ("Works")
-                        print("You have picked up a " + CurrentRoom.items[0].name)
-                        CurrentRoom.items.remove(CurrentRoom.items[0])
-                        break
+                    if word2 in CurrentRoom.ItemsInRoom():
+                        for i in CurrentRoom.items:
+                            print("item got")
+                            if (word2 == str(i.name)):
+                                print ("item found")
+                                Character.itemsHeld.append(i)
+                                print("You have picked up a " + i.name)
+                                CurrentRoom.items.remove(i)
+                                break
+                            else:
+                                print("not the right item")
                     else:
-                        print("You cannot pick this up!")
+                        ##print("You cannot pick this up!")
                         break
+
                 elif word1 == "drop":
                     if word2 in Character.ItemCheck():
                         print("Dropping an item")
                         ItemDrop(word2);
                         break
-                        
                 elif (word1 == "quit") or (word2 == "quit"):
                     GameEnded = True
                     break
             else:
                 print("Unknown Command")
+                break
         else:
             print("Please only enter 1 - 2 words. Enter help to see avaliable commands")
 
@@ -137,12 +150,13 @@ def ItemDrop(word2):
         if (word2 == str(i.name)):
             print ("item found")
             CurrentRoom.items.append(i)
-            print("You have dropped up a " + i.name)
+            print("You have dropped a " + i.name)
             Character.itemsHeld.remove(i)
             print(CurrentRoom.ItemsInRoom())
 
         else:
             print("not the right item")
+
 
 print(StartingStory)
 Character = Character([Item("",Placeholder,Placeholder)],0,0)
