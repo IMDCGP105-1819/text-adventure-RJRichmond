@@ -5,7 +5,8 @@ class Room(object):
         self.positiony = positiony;
         self.exits = exits;
         self.description = description;
-        self.lock = lock;
+        self.locked = locked;
+        self.lockUse = lockUse
 
     def __str__(self):
         RoomEnterDescription = ("You are"+ self.description)

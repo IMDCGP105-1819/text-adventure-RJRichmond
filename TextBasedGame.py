@@ -4,9 +4,9 @@ from StoryAndDescriptions import *
 GameEnded = False
 Rooms = []
 #x 1 east -1 west y 1 north -1 south
-Rooms.append(Room([Item("",Placeholder,Placeholder)],0,0,[[0,1]],StartingRoomDescription,n)) # Starting room
-Rooms.append(Room([Item("picture",PictureDescription,PictureUse),Item("",Placeholder,Placeholder)],0,1,[[-1,1],[0,0]],PorchDescription,n)) # Porch
-Rooms.append(Room([Item("",Placeholder,Placeholder)],-1,1,[[0,1],[-1,2]],NewRoomDescription,y)) # Kitchen
+Rooms.append(Room([Item("",Placeholder,Placeholder)],0,0,[[0,1]],StartingRoomDescription,"n","")) # Starting room
+Rooms.append(Room([Item("picture",PictureDescription,PictureUse),Item("",Placeholder,Placeholder)],0,1,[[-1,1],[0,0]],PorchDescription,"n","")) # Porch
+Rooms.append(Room([Item("",Placeholder,Placeholder)],-1,1,[[0,1],[-1,2]],NewRoomDescription,"y","picture")) # Kitchen
 
 def InputCheck(Input):
     CurrentRoom = TheRoom(Character.positionx,Character.positiony)
@@ -80,7 +80,8 @@ def InputCheck(Input):
                 elif word1 == "use":
                     if word2 in Character.ItemCheck():
                         print("Using the item")
-
+                        ItemUsing(word2);
+                        break
 
                 elif word1 == "drop":
                     if word2 in Character.ItemCheck():
@@ -165,7 +166,7 @@ def ItemUsing(word2):
     CurrentRoom = TheRoom(Character.positionx,Character.positiony)
     if (word2 == str(CurrentRoom.lockUse)):
         print("Item matches")
-        CurrentRoom.locked = n
+        CurrentRoom.locked = "n"
         for i in Character.itemsHeld:
             if (word2 == str(i.name)):
                 print(i.Use)
