@@ -4,9 +4,10 @@ from StoryAndDescriptions import *
 GameEnded = False
 Rooms = []
 #x 1 east -1 west y 1 north -1 south
-Rooms.append(Room([Item("",Placeholder,Placeholder)],0,0,[[0,1]],StartingRoomDescription,"n","")) # Starting room
-Rooms.append(Room([Item("picture",PictureDescription,PictureUse),Item("",Placeholder,Placeholder)],0,1,[[-1,1],[0,0]],PorchDescription,"n","")) # Porch
-Rooms.append(Room([Item("",Placeholder,Placeholder)],-1,1,[[0,1],[-1,2]],NewRoomDescription,"y","picture")) # Kitchen
+Rooms.append(Room([Item("",Placeholder,Placeholder)],0,0,[[0,1]],StartingRoomDescription,"","OutsideHouse")) # Starting room / Outside House
+Rooms.append(Room([Item("picture",PictureDescription,PictureUse),Item("",Placeholder,Placeholder)],0,1,[[-1,1],[0,0]],PorchDescription,"","Porch")) # Porch
+Rooms.append(Room([Item("",Placeholder,Placeholder)],-1,1,[[0,1]],NewRoomDescription,"picture","Kitchen")) # Kitchen
+Rooms.append(Room([Item("",Placeholder,Placeholder)],-1,2,[[-1,1],[0,2]],NewRoomDescription,"","DiningRoom")) # Dining Room
 
 def InputCheck(Input):
     CurrentRoom = TheRoom(Character.positionx,Character.positiony)
@@ -75,7 +76,7 @@ def InputCheck(Input):
                             else:
                                 print("not the right item")
                     else:
-                        ##print("You cannot pick this up!")
+                        #print("You cannot pick this up!")
                         break
                 elif word1 == "use":
                     if word2 in Character.ItemCheck():
@@ -118,12 +119,13 @@ def Move(word1,word2):
         if (str(CharacterPosition) in str(CurrentRoom.exits)):
             print("happens")
             for rooms in CurrentRoom.exits:
-                print(CurrentRoom.exits[0])
+                print(CurrentRoom.exits)
                 if (str(CharacterPosition) == str(CurrentRoom.exits[0])) or (str(CharacterPosition) == str(CurrentRoom.exits[1])):
-                    CurrentRoom = TheRoom(Character.positionx,Character.positiony)
-                    print("You move to the",word2)
-                    print(CurrentRoom)
-                    break
+                            CurrentRoom = TheRoom(Character.positionx,Character.positiony)
+                            print("You enter",str(CurrentRoom.name))
+                            print("You move to the",word2)
+                            print(CurrentRoom)
+                            break
                 else:
                     print("You cannot move in this direction")
         else:
@@ -137,6 +139,7 @@ def TheRoom(positionx,positiony):
     for room in Rooms:
         if (room.positionx == Character.positionx) and (room.positiony == Character.positiony):
             return room
+
 
 def ItemCheck(word2):
     for i in Character.itemsHeld:
@@ -169,9 +172,11 @@ def ItemUsing(word2):
         CurrentRoom.locked = "n"
         for i in Character.itemsHeld:
             if (word2 == str(i.name)):
+                print("You have used " + i.name)
                 print(i.Use)
                 Character.itemsHeld.remove(i)
-                print("You have used " + i.name)
+                if (i.name == "picture"):
+                    CurrentRoom.exits.append([-1,2])
     else:
         print("Using this item has no effect.")
 

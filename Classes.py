@@ -1,12 +1,12 @@
 class Room(object):
-    def __init__(self,items,positionx,positiony,exits,description,locked,lockUse):
+    def __init__(self,items,positionx,positiony,exits,description,lockUse,name):
         self.items = items;
         self.positionx = positionx;
         self.positiony = positiony;
         self.exits = exits;
         self.description = description;
-        self.locked = locked;
         self.lockUse = lockUse
+        self.name = name;
 
     def __str__(self):
         RoomEnterDescription = ("You are"+ self.description)
