@@ -4,9 +4,9 @@ from StoryAndDescriptions import *
 GameEnded = False
 Rooms = []
 #x 1 east -1 west y 1 north -1 south
-Rooms.append(Room([Item("",Placeholder,Placeholder)],0,0,[[0,1]],StartingRoomDescription)) # Starting room
-Rooms.append(Room([Item("picture",PictureDescription,PictureUse),Item("",Placeholder,Placeholder)],0,1,[[-1,1],[0,0]],PorchDescription)) # Porch
-Rooms.append(Room([Item("",Placeholder,Placeholder)],-1,1,[[0,1],[-1,2]],NewRoomDescription)) # Kitchen
+Rooms.append(Room([Item("",Placeholder,Placeholder)],0,0,[[0,1]],StartingRoomDescription,n)) # Starting room
+Rooms.append(Room([Item("picture",PictureDescription,PictureUse),Item("",Placeholder,Placeholder)],0,1,[[-1,1],[0,0]],PorchDescription,n)) # Porch
+Rooms.append(Room([Item("",Placeholder,Placeholder)],-1,1,[[0,1],[-1,2]],NewRoomDescription,y)) # Kitchen
 
 def InputCheck(Input):
     CurrentRoom = TheRoom(Character.positionx,Character.positiony)
@@ -77,6 +77,10 @@ def InputCheck(Input):
                     else:
                         ##print("You cannot pick this up!")
                         break
+                elif word1 == "use":
+                    if word2 in Character.ItemCheck():
+                        print("Using the item")
+
 
                 elif word1 == "drop":
                     if word2 in Character.ItemCheck():
@@ -157,6 +161,18 @@ def ItemDrop(word2):
         else:
             print("not the right item")
 
+def ItemUsing(word2):
+    CurrentRoom = TheRoom(Character.positionx,Character.positiony)
+    if (word2 == str(CurrentRoom.lockUse)):
+        print("Item matches")
+        CurrentRoom.locked = n
+        for i in Character.itemsHeld:
+            if (word2 == str(i.name)):
+                print(i.Use)
+                Character.itemsHeld.remove(i)
+                print("You have used " + i.name)
+    else:
+        print("Using this item has no effect.")
 
 print(StartingStory)
 Character = Character([Item("",Placeholder,Placeholder)],0,0)

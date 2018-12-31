@@ -1,10 +1,11 @@
 class Room(object):
-    def __init__(self,items,positionx,positiony,exits,description):
+    def __init__(self,items,positionx,positiony,exits,description,locked,lockUse):
         self.items = items;
         self.positionx = positionx;
         self.positiony = positiony;
         self.exits = exits;
         self.description = description;
+        self.lock = lock;
 
     def __str__(self):
         RoomEnterDescription = ("You are"+ self.description)
@@ -23,6 +24,7 @@ class Room(object):
             print(ItemNames)
             Itemlist.append(ItemNames)
         return Itemlist
+
 
 class Character(object):
     def __init__(self, itemsHeld,positionx,positiony):
