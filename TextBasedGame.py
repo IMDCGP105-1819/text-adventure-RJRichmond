@@ -6,8 +6,8 @@ Rooms = []
 #x 1 east -1 west y 1 north -1 south
 Rooms.append(Room([Item("",Placeholder,Placeholder)],0,0,[[0,1]],StartingRoomDescription,"","OutsideHouse")) # Starting room / Outside House
 Rooms.append(Room([Item("picture",PictureDescription,PictureUse),Item("",Placeholder,Placeholder)],0,1,[[-1,1],[0,0]],PorchDescription,"","Porch")) # Porch
-Rooms.append(Room([Item("",Placeholder,Placeholder)],-1,1,[[0,1]],NewRoomDescription,"picture","Kitchen")) # Kitchen
-Rooms.append(Room([Item("",Placeholder,Placeholder)],-1,2,[[-1,1],[0,2]],NewRoomDescription,"","DiningRoom")) # Dining Room
+Rooms.append(Room([Item("",Placeholder,Placeholder)],-1,1,[[0,1]],KitchenDescription,"picture","Kitchen")) # Kitchen
+Rooms.append(Room([Item("",Placeholder,Placeholder)],-1,2,[[-1,1],[0,2]],StudyDescription,"","Study")) # Study
 
 def InputCheck(Input):
     CurrentRoom = TheRoom(Character.positionx,Character.positiony)
