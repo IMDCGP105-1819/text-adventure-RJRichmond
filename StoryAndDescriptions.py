@@ -68,7 +68,7 @@ You picked up the lighter from the lockbox, it looks fairly modern however it is
 seem to have much fluid left in itself.
  """
 
- lighterUse = """
+lighterUse = """
 You light all of the candles in the room, suddenly you hear another mechanism moving, it reveals a trap door which was hidden,
 underneath a rug, you are wondering what in the house is left to find and what are they hiding.
  """

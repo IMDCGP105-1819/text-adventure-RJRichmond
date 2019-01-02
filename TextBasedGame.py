@@ -8,8 +8,8 @@ Rooms.append(Room([Item("",Placeholder,Placeholder)],0,0,[[0,1]],StartingRoomDes
 Rooms.append(Room([Item("picture",PictureDescription,PictureUse),Item("",Placeholder,Placeholder)],0,1,[[-1,1],[0,0],[0,2]],PorchDescription,"","Porch")) # Porch
 Rooms.append(Room([Item("",Placeholder,Placeholder)],-1,1,[[0,1]],KitchenDescription,"picture","Kitchen")) # Kitchen
 Rooms.append(Room([Item("key",keyDescription,keyUse),Item("",Placeholder,Placeholder)],-1,2,[[-1,1]],StudyDescription,"","Study")) # Study
-Rooms.append(Room([Item("",Placeholder,Placeholder)],0,2,[[0,1],[1,2]],LivingRoomDescription,"","Living Room")) # Living Room
-Rooms.append(Room([Item("",Placeholder,Placeholder)],1,2,[[0,2]],DiningRoomDescription,"","Dining Room")) # Dining Room
+Rooms.append(Room([Item("",Placeholder,Placeholder)],0,2,[[0,1],[1,2]],LivingRoomDescription,"key","Living Room")) # Living Room
+Rooms.append(Room([Item("",Placeholder,Placeholder)],1,2,[[0,2]],DiningRoomDescription,"lighter","Dining Room")) # Dining Room
 
 def InputCheck(Input):
     CurrentRoom = TheRoom(Character.positionx,Character.positiony)
@@ -72,6 +72,14 @@ def InputCheck(Input):
                             if (word2 == str(i.name)):
                                 print ("item found")
                                 Character.itemsHeld.append(i)
+                                if (i.name == "picture"):
+                                    CurrentRoom.description = """ now inside of the building you still can't make out what the purpose of the building was,
+only that you were right about it being uninhabitated, there is shattered glass on the floor and thick layers
+of dust blanketing everything."""
+                                if (i.name == "key"):
+                                    CurrentRoom.description = """ in the middle of the study, it is filled with books and what seem to be papers spread out around the room,
+there is a desk in the center of the room.
+                                    """
                                 print("You have picked up a " + i.name)
                                 CurrentRoom.items.remove(i)
                                 break
@@ -122,7 +130,7 @@ def Move(word1,word2):
             print("happens")
             for rooms in CurrentRoom.exits:
                 print(CurrentRoom.exits)
-                if (str(CharacterPosition) == str(CurrentRoom.exits[0])) or (str(CharacterPosition) == str(CurrentRoom.exits[1])):
+                if (str(CharacterPosition) == str(CurrentRoom.exits[0])) or (str(CharacterPosition) == str(CurrentRoom.exits[1])) or (str(CharacterPosition) == str(CurrentRoom.exits[2])):
                             CurrentRoom = TheRoom(Character.positionx,Character.positiony)
                             print("You enter",str(CurrentRoom.name))
                             print("You move to the",word2)
@@ -179,6 +187,20 @@ def ItemUsing(word2):
                 Character.itemsHeld.remove(i)
                 if (i.name == "picture"):
                     CurrentRoom.exits.append([-1,2])
+                    CurrentRoom.description = """ inside a grand kitchen, it seems strangely clean inside,
+the dust which is coating the porch is nowhere to be seen, it makes you feel uneasy as
+someone else might have come through or still maintains this room, the hidden room behind the bookshelf doesn't help either.
+                    """
+                if (i.name == "key"):
+                    CurrentRoom.items.append(Item("lighter",lighterDescription,lighterUse))
+                    CurrentRoom.description = """ in a large room there is chairs with a fireplace in the corner of the room, It seems like this would
+have been a gathering room or a living room, ,the large lockbox is opened and is where you found the lighter.
+                    """
+                if (i.name == "lighter"):
+                    CurrentRoom.exits.append([1,3])
+                    CurrentRoom.description = """ standing in the middle of what looks like a dining room due to the large table in the center of the room
+all of the candles are lit and revealed a hidden trap door.
+                    """
     else:
         print("Using this item has no effect.")
 
