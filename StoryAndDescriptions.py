@@ -36,9 +36,11 @@ StudyDescription = """ in the middle of the study, it is filled with books and w
 there is a desk in the center of the room which has key sitting on it, it looks quite important!
 """
 
+
+
 #Items Desc
 PictureDescription = """
-You pick up a picture which was sitting on the sit, you wipe away the dust to find that a women must have lived here,
+You picked up a picture which was sitting on the side, you wipe away the dust to find that a women must have lived here,
 the picture has yellowed with age.
 """
 PictureUse = """
@@ -46,5 +48,23 @@ You remove the dust and webs off of the picture frame and then put in the pictur
 suddenly you hear some mechanisms and a bookshelf shifts, revealing a doorway!
  """
 
+keyDescription = """
+You picked up a key, it looks quite old as the rust on it almost makes it look bronze.
+ """
+
+keyUse = """
+You put the key into the lockbox and turn it, to your surprise the lockbox pings open and it contains a lighter,
+it doesn't seem to have much fluid for a lot of uses so I should save it for something.
+ """
+
+lighterDescription = """
+You picked up the lighter from the lockbox, it looks fairly modern however it is incredibly light and it doesn't,
+seem to have much fluid left in itself.
+ """
+
+ lighterUse = """
+You light all of the candles in the room, suddenly you hear another mechanism moving, it reveals a trap door which was hidden,
+underneath a rug, you are wondering what in the house is left to find and what are they hiding.
+ """
 #Placeholder text
 Placeholder = ""
