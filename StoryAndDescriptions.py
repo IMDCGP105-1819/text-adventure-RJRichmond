@@ -36,7 +36,13 @@ StudyDescription = """ in the middle of the study, it is filled with books and w
 there is a desk in the center of the room which has key sitting on it, it looks quite important!
 """
 
+LivingRoomDescription = """ in a large room there is chairs with a fireplace in the corner of the room, It seems like this would
+have been a gathering room or a living room, there is nothing notable except for a large lockbox which underneath a side table.
+"""
 
+DiningRoomDescription = """ standing in the middle of what looks like a dining room due to the large table in the center of the room
+however something is off there is candles scattered around the table, they seem to be in a strange order and they still have wick left.
+"""
 
 #Items Desc
 PictureDescription = """

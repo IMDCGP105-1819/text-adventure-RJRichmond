@@ -8,7 +8,8 @@ Rooms.append(Room([Item("",Placeholder,Placeholder)],0,0,[[0,1]],StartingRoomDes
 Rooms.append(Room([Item("picture",PictureDescription,PictureUse),Item("",Placeholder,Placeholder)],0,1,[[-1,1],[0,0],[0,2]],PorchDescription,"","Porch")) # Porch
 Rooms.append(Room([Item("",Placeholder,Placeholder)],-1,1,[[0,1]],KitchenDescription,"picture","Kitchen")) # Kitchen
 Rooms.append(Room([Item("key",keyDescription,keyUse),Item("",Placeholder,Placeholder)],-1,2,[[-1,1]],StudyDescription,"","Study")) # Study
-Rooms.append(Room([Item("",Placeholder,Placeholder)],0,2,[[0,1],[1,2]],Placeholder,"","Living Room")) # Living Room
+Rooms.append(Room([Item("",Placeholder,Placeholder)],0,2,[[0,1],[1,2]],LivingRoomDescription,"","Living Room")) # Living Room
+Rooms.append(Room([Item("",Placeholder,Placeholder)],1,2,[[0,2]],DiningRoomDescription,"","Dining Room")) # Dining Room
 
 def InputCheck(Input):
     CurrentRoom = TheRoom(Character.positionx,Character.positiony)
