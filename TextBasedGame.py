@@ -10,6 +10,8 @@ Rooms.append(Room([Item("",Placeholder,Placeholder)],-1,1,[[0,1]],KitchenDescrip
 Rooms.append(Room([Item("key",keyDescription,keyUse),Item("",Placeholder,Placeholder)],-1,2,[[-1,1]],StudyDescription,"","Study")) # Study
 Rooms.append(Room([Item("",Placeholder,Placeholder)],0,2,[[0,1],[1,2]],LivingRoomDescription,"key","Living Room")) # Living Room
 Rooms.append(Room([Item("",Placeholder,Placeholder)],1,2,[[0,2]],DiningRoomDescription,"lighter","Dining Room")) # Dining Room
+Rooms.append(Room([Item("knife",KnifeDescription,knifeUse),Item("",Placeholder,Placeholder)],1,3,[[2,3]],CellerDescription,"","Celler")) # Celler
+Rooms.append(Room([Item("",Placeholder,Placeholder)],2,3,[[1,3]],Placeholder,"knife","Cave enterance")) # Cave Enterance
 
 def InputCheck(Input):
     CurrentRoom = TheRoom(Character.positionx,Character.positiony)
