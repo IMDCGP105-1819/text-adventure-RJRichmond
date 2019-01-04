@@ -1,0 +1,34 @@
+Map:
+
+                              --------      --------
+                              |   C  |______|    R |
+                              |      |      |      |
+                              --------      --------
+                                  /
+---------      ---------      --------
+|    S  |      |   L   |______|      |
+|       |      |       |      |   D  |
+---------      ---------      --------
+    /              |
+---------      ---------
+|       |      |       |
+|   K   | -----|   P   |
+|       |      |       |
+---------      ---------
+                   |
+               ---------
+               |   O   |
+               |       |
+               ---------.
+O - Outside     K - Kitchen     L - LivingRoom    C - Celler
+P - Porch       S - Study       D - DiningRoom    R - RitualRoom
+/ - Secret Door
+
+1. Move north           9. Move east
+2. Pickup picture       10. Move north
+3. Move west            11. Use Key
+4. Pickup knife         12. Pickup lighter
+5. Use picture          13. Move east
+6. Move north           14. Use lighter
+7. Pickup key           15. Move north
+8. Move south           16. Use knife
