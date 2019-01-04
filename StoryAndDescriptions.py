@@ -5,18 +5,6 @@ while asking for directions on the closest town. The building looks ancient with
 it looks as no one has been here in generations as nature has taken its toll on it.
 """
 
-EnterPorch = """
-You enter the building after pushing open the towering mahogany doors, the creaking noise as it opens pierces your ears,
-as you step in you notice the air is thick and it makes it hard to breath.
-"""
-
-EnterKitchen = """
-You Walk into the Kitchen, however you get a cold sweat pass through your body as the room gives a completely different,
-vibe. Everything is clean and kept in a good manner, there is pots and pans on the walls which are sparkling clean.
-It's almost like someone is still uses this room often. You see a bookcase at the edge of the room, it has an empty picture frame
-sitting on it.
-"""
-
 #Rooms
 StartingRoomDescription = """ Outside the rundown building looking ancient with vines seeping out of every crack,
 it looks as no one has been here in generations as nature has taken its toll on it. The door to the house is to the north.
@@ -27,15 +15,29 @@ only that you were right about it being uninhabitated, there is shattered glass 
 of dust blanketing everything. There is two exits, one is to the north, the other is to the west.
 You notice a picture on the shelf.
 """
+PorchDescription2 = """ now inside of the building you still can't make out what the purpose of the building was,
+only that you were right about it being uninhabitated, there is shattered glass on the floor and thick layers
+of dust blanketing everything. There is two exits, one is to the north, the other is to the west.
+"""
 
-KitchenDescription = """ inside a grand kitchen, it seems strangely clean inside,
-the dust which is coating the porch is nowhere to be seen, it makes you feel uneasy as
-someone else might have come through or still maintains this room. There is an exit to the east
-You do notice an empty picture frame sitting on a bookshelf.
+KitchenDescription = """ inside a grand kitchen, it seems strangely clean inside, the dust which is coating the porch is
+nowhere to be seen, it makes you feel uneasy as someone else might have come through or still maintains this room.
+There is an exit to the east. You do notice an empty picture frame sitting on a bookshelf.
+You also notice some blood on the wall going near it reveals a some small knives and a bloody knife.
+"""
+
+KitchenDescription2 = """ inside a grand kitchen, it seems strangely clean inside, the dust which is coating the porch is
+nowhere to be seen, it makes you feel uneasy as someone else might have come through or still maintains this room.
+The hidden room behind the bookshelf doesn't help either. There is an exit to the east and one to the north.
+The blood patch is there where the knives are.
 """
 
 StudyDescription = """ in the middle of the study, it is filled with books and what seem to be papers spread out around the room,
 The only exit is the way you came, south. There is a desk in the center of the room which has key sitting on it, it looks quite important!
+"""
+
+StudyDescription2 = """  in the middle of the study, it is filled with books and what seem to be papers spread out around the room,
+The only exit is the way you came, south. There is a desk in the center of the room.
 """
 
 LivingRoomDescription = """ in a large room there is chairs with a fireplace in the corner of the room, It seems like this would
@@ -43,18 +45,28 @@ have been a gathering room or a living room. Some old childrens dolls sit around
 rest of the room. There is two exits, one to the south and the other to the east. There is a large lockbox which underneath a side table.
 """
 
+LivingRoomDescription2 = """  in a large room there is chairs with a fireplace in the corner of the room, It seems like this would
+have been a gathering room or a living room, there is two exits, one to the south and the other to the east.
+The large lockbox is opened and is where you found the lighter.
+"""
+
 DiningRoomDescription = """ standing in the middle of what looks like a dining room due to the large table in the center of the room
 however something is off there is candles scattered around the table, they seem to be in a strange order and they still have wick left.
 There is an exit to the west.
 """
 
+DiningRoomDescription2 = """  standing in the middle of what looks like a dining room due to the large table in the center of the room
+all of the candles are lit and revealed a hidden trap door. There is an exit to the west and one to the north.
+"""
+
 CellerDescription = """ at the bottom of the ladder leading back to the dinner room, the celler has some smashed boxes and barrels
 in the corner, it seems like someone was searching for something important. There is a cave opening to the east of the room and the
-way to get back up is to the south. You notice some blood on the wall going near it reveals a small bloody knife.
+way to get back up is to the south.
 """
 
 CaveDescription = """ in the middle of the strange cave, the room is very humid and has strange etchings all over the walls.
-One of the etchings catch your eye, its beneath an alter of some sort and it feels like it is calling out to you.
+One of the etchings catch your eye, its beneath an alter of some sort and it feels like it is calling out to you. It looks like a
+ritual and one of etching is a knife.
 """
 #Items Desc
 PictureDescription = """

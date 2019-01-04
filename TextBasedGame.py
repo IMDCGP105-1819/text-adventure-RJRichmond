@@ -6,11 +6,11 @@ Rooms = []
 #x 1 east -1 west y 1 north -1 south
 Rooms.append(Room([Item("",Placeholder,Placeholder)],0,0,[[0,1]],StartingRoomDescription,"","OutsideHouse")) # Starting room / Outside House
 Rooms.append(Room([Item("picture",PictureDescription,PictureUse),Item("",Placeholder,Placeholder)],0,1,[[-1,1],[0,0],[0,2]],PorchDescription,"","Porch")) # Porch
-Rooms.append(Room([Item("",Placeholder,Placeholder)],-1,1,[[0,1]],KitchenDescription,"picture","Kitchen")) # Kitchen
+Rooms.append(Room([Item("knife",KnifeDescription,knifeUse)],-1,1,[[0,1]],KitchenDescription,"picture","Kitchen")) # Kitchen
 Rooms.append(Room([Item("key",keyDescription,keyUse),Item("",Placeholder,Placeholder)],-1,2,[[-1,1]],StudyDescription,"","Study")) # Study
 Rooms.append(Room([Item("",Placeholder,Placeholder)],0,2,[[0,1],[1,2]],LivingRoomDescription,"key","Living Room")) # Living Room
 Rooms.append(Room([Item("",Placeholder,Placeholder)],1,2,[[0,2]],DiningRoomDescription,"lighter","Dining Room")) # Dining Room
-Rooms.append(Room([Item("knife",KnifeDescription,knifeUse),Item("",Placeholder,Placeholder)],1,3,[[2,3]],CellerDescription,"","Celler")) # Celler
+Rooms.append(Room([Item("",Placeholder,Placeholder),Item("",Placeholder,Placeholder)],1,3,[[2,3]],CellerDescription,"","Celler")) # Celler
 Rooms.append(Room([Item("",Placeholder,Placeholder)],2,3,[[1,3]],CaveDescription,"knife","Cave enterance")) # Cave Enterance
 
 def InputCheck(Input):
@@ -37,6 +37,9 @@ def InputCheck(Input):
                         print("Using the item")
                         ItemUsing(word2);
                         break
+                    else:
+                        print("You don't have this item!")
+                        break
                 elif word1 == "drop":
                     word2 = Input(str("What do you want to drop?"))
                     if word2 in Character.ItemCheck():
@@ -44,7 +47,8 @@ def InputCheck(Input):
                         ItemDrop(word2);
                         break
                 elif word1 == "quit":
-                    GameEnded = True
+                    print("Something happen")
+                    GameEnding();
                     break
                 elif word1 == "help":
                     print("You can enter these commands : ",AvaliableCommands)
@@ -85,13 +89,9 @@ def InputCheck(Input):
                                 print ("item found")
                                 Character.itemsHeld.append(i)
                                 if (i.name == "picture"):
-                                    CurrentRoom.description = """ now inside of the building you still can't make out what the purpose of the building was,
-only that you were right about it being uninhabitated, there is shattered glass on the floor and thick layers
-of dust blanketing everything."""
+                                    CurrentRoom.description = PorchDescription2
                                 if (i.name == "key"):
-                                    CurrentRoom.description = """ in the middle of the study, it is filled with books and what seem to be papers spread out around the room,
-there is a desk in the center of the room.
-                                    """
+                                    CurrentRoom.description = StudyDescription2
                                 print("You have picked up a " + i.name)
                                 CurrentRoom.items.remove(i)
                                 break
@@ -105,6 +105,9 @@ there is a desk in the center of the room.
                         print("Using the item")
                         ItemUsing(word2);
                         break
+                    else:
+                        print("You don't have this item!")
+                        break
 
                 elif word1 == "drop":
                     if word2 in Character.ItemCheck():
@@ -112,8 +115,8 @@ there is a desk in the center of the room.
                         ItemDrop(word2);
                         break
                 elif (word1 == "quit") or (word2 == "quit"):
-                    GameEnded = True
-                    break
+                    GameEnding();
+
             else:
                 print("Unknown Command")
                 break
@@ -199,37 +202,33 @@ def ItemUsing(word2):
                 Character.itemsHeld.remove(i)
                 if (i.name == "picture"):
                     CurrentRoom.exits.append([-1,2])
-                    CurrentRoom.description = """ inside a grand kitchen, it seems strangely clean inside,
-the dust which is coating the porch is nowhere to be seen, it makes you feel uneasy as
-someone else might have come through or still maintains this room, the hidden room behind the bookshelf doesn't help either.
-                    """
+                    CurrentRoom.description = KitchenDescription2
                 elif (i.name == "key"):
                     CurrentRoom.items.append(Item("lighter",lighterDescription,lighterUse))
-                    CurrentRoom.description = """ in a large room there is chairs with a fireplace in the corner of the room, It seems like this would
-have been a gathering room or a living room, ,the large lockbox is opened and is where you found the lighter.
-                    """
+                    CurrentRoom.description = LivingRoomDescription2
                 elif (i.name == "lighter"):
                     CurrentRoom.exits.append([1,3])
-                    CurrentRoom.description = """ standing in the middle of what looks like a dining room due to the large table in the center of the room
-all of the candles are lit and revealed a hidden trap door.
-                    """
+                    CurrentRoom.description = DiningRoomDescription2
                 elif (i.name == "knife"):
                     Ending = open("Ending.txt","r")
                     print (Ending.read())
                     Ending.close()
-                    GameEnded == True
+                    GameEnding();
 
     else:
         print("Using this item has no effect.")
+
+def GameEnding():
+    global GameEnded
+    GameEnded = True
 
 print(StartingStory)
 Character = Character([Item("",Placeholder,Placeholder)],0,0)
 CharacterPosition = [0,0]
 
 while True:
-
-    UserInput = str(input("Please enter a command : "))
-    InputCheck(UserInput.lower())
     if (GameEnded == True):
         print("Game Ended, Thanks for playing!")
         break
+    UserInput = str(input("Please enter a command : "))
+    InputCheck(UserInput.lower())
