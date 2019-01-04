@@ -17,7 +17,6 @@ def InputCheck(Input):
     CurrentRoom = TheRoom(Character.positionx,Character.positiony)
     AvaliableCommands = ["move", "check", "use", "pickup","drop","help","quit"]
     Command = Input.split()
-    print(Command)
     for i in Command:
         if (len(Command) == 1):
             word1 = (Command[0])
@@ -34,7 +33,7 @@ def InputCheck(Input):
                 elif word1 == "use":
                     word2 = (str(input("Enter what you would like to use : "))).lower()
                     if word2 in Character.ItemCheck():
-                        print("Using the item")
+
                         ItemUsing(word2);
                         break
                     else:
@@ -43,11 +42,11 @@ def InputCheck(Input):
                 elif word1 == "drop":
                     word2 = Input(str("What do you want to drop?"))
                     if word2 in Character.ItemCheck():
-                        print("Dropping an item")
+
                         ItemDrop(word2);
                         break
                 elif word1 == "quit":
-                    print("Something happen")
+
                     GameEnding();
                     break
                 elif word1 == "help":
@@ -60,21 +59,19 @@ def InputCheck(Input):
             word1 = (Command[0])
             word2 = (Command[1])
             if (word1 in AvaliableCommands) or (word2 in AvaliableCommands):
-                print(CurrentRoom.ItemsInRoom())
                 if (word1 == "move") or (word2 == "move"):
                     Move(word1,word2)
                     break
                 elif word1 == "check":
-                    print(Character.ItemCheck())
                     if word2 == "room":
                         print(CurrentRoom)
                         break
                     elif word2 == "inv":
-                        print("This is happening")
+
                         print(Character)
                         break
                     elif word2 in Character.ItemCheck():
-                        print("This is checking properly")
+
                         ItemCheck(word2);
                         break
                     else:
@@ -84,9 +81,9 @@ def InputCheck(Input):
                 elif word1 == "pickup":
                     if word2 in CurrentRoom.ItemsInRoom():
                         for i in CurrentRoom.items:
-                            print("item got")
+
                             if (word2 == str(i.name)):
-                                print ("item found")
+
                                 Character.itemsHeld.append(i)
                                 if (i.name == "picture"):
                                     CurrentRoom.description = PorchDescription2
@@ -94,15 +91,14 @@ def InputCheck(Input):
                                     CurrentRoom.description = StudyDescription2
                                 print("You have picked up a " + i.name)
                                 CurrentRoom.items.remove(i)
-                                break
-                            else:
-                                print("not the right item")
+                                return
+
                     else:
-                        #print("You cannot pick this up!")
+                        print("You cannot pick this up!")
                         break
                 elif word1 == "use":
                     if word2 in Character.ItemCheck():
-                        print("Using the item")
+
                         ItemUsing(word2);
                         break
                     else:
@@ -111,7 +107,7 @@ def InputCheck(Input):
 
                 elif word1 == "drop":
                     if word2 in Character.ItemCheck():
-                        print("Dropping an item")
+
                         ItemDrop(word2);
                         break
                 elif (word1 == "quit") or (word2 == "quit"):
@@ -129,7 +125,7 @@ def Move(word1,word2):
     if (word1 in Directions) or (word2 in Directions):
         if (word1 == "north" or word1 == "n") or (word2 == "north" or word2 == "n"):
              Character.positiony += 1
-             #print(Character.positiony)
+
         if (word1 == "east" or word1 == "e") or (word2 == "east" or word2 == "e"):
             Character.positionx += 1
         if (word1 == "south" or word1 == "s") or (word2 == "south" or word2 == "s"):
@@ -137,14 +133,11 @@ def Move(word1,word2):
         if (word1 == "west" or word1 == "w") or (word2 == "west" or word2 == "w"):
             Character.positionx -= 1
         CharacterPosition = [Character.positionx,Character.positiony]
-        #print(CharacterPosition)
-        #if (str(CurrentRoom.exits) == str(CharacterPosition)):
-        print(CharacterPosition)
-        print(CurrentRoom.exits)
+
         if (str(CharacterPosition) in str(CurrentRoom.exits)):
-            print("happens")
+
             for rooms in CurrentRoom.exits:
-                print(CurrentRoom.exits)
+
                 if (str(CharacterPosition) == str(CurrentRoom.exits[0])) or (str(CharacterPosition) == str(CurrentRoom.exits[1])) or (str(CharacterPosition) == str(CurrentRoom.exits[2])):
                             CurrentRoom = TheRoom(Character.positionx,Character.positiony)
                             print("You enter",str(CurrentRoom.name))
@@ -168,32 +161,26 @@ def TheRoom(positionx,positiony):
 
 def ItemCheck(word2):
     for i in Character.itemsHeld:
-        print("item got")
         if (word2 == str(i.name)):
-            print ("item found")
             print (i.itemDesc)
-        else:
-            print("not the right item")
+
 
 def ItemDrop(word2):
     CurrentRoom = TheRoom(Character.positionx,Character.positiony)
-    print(CurrentRoom.ItemsInRoom())
+
     for i in Character.itemsHeld:
-        print("item got")
         if (word2 == str(i.name)):
-            print ("item found")
             CurrentRoom.items.append(i)
             print("You have dropped a " + i.name)
             Character.itemsHeld.remove(i)
-            print(CurrentRoom.ItemsInRoom())
+            break
 
-        else:
-            print("not the right item")
+        
 
 def ItemUsing(word2):
     CurrentRoom = TheRoom(Character.positionx,Character.positiony)
     if (word2 == str(CurrentRoom.lockUse)):
-        print("Item matches")
+
         CurrentRoom.locked = "n"
         for i in Character.itemsHeld:
             if (word2 == str(i.name)):

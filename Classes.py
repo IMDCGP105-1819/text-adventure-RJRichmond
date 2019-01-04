@@ -22,7 +22,6 @@ class Room(object):
         for i in self.items:
             ItemNames = ""
             ItemNames += str(i.name)
-            print(ItemNames)
             Itemlist.append(ItemNames)
         return Itemlist
 
@@ -43,7 +42,7 @@ class Character(object):
         for i in self.itemsHeld:
             ItemNames = ""
             ItemNames += str(i.name)
-            print(ItemNames)
+            
             Itemlist.append(ItemNames)
         return Itemlist
 

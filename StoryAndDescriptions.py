@@ -89,7 +89,7 @@ it doesn't seem to have much fluid for a lot of uses so I should save it for som
 
 lighterDescription = """
 The lighter looks fairly modern however it is incredibly light and it doesn't,
-seem to have much fluid left in itself.
+seem to have much fluid left in it.
  """
 
 lighterUse = """
