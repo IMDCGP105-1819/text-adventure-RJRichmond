@@ -15,7 +15,7 @@ Rooms.append(Room([Item("",Placeholder,Placeholder)],2,3,[[1,3]],CaveDescription
 
 def InputCheck(Input):
     CurrentRoom = TheRoom(Character.positionx,Character.positiony)
-    AvaliableCommands = ["move", "check", "use", "pickup","drop", "quit"]
+    AvaliableCommands = ["move", "check", "use", "pickup","drop","help","quit"]
     Command = Input.split()
     print(Command)
     for i in Command:
@@ -29,7 +29,14 @@ def InputCheck(Input):
                     break
                 elif word1 == "check":
                     print (CurrentRoom)
+                    print ("To check something specific please use : Check [what you would like to check]")
                     break
+                elif word1 == "use":
+                    word2 = (str(input("Enter what you would like to use : "))).lower()
+                    if word2 in Character.ItemCheck():
+                        print("Using the item")
+                        ItemUsing(word2);
+                        break
                 elif word1 == "drop":
                     word2 = Input(str("What do you want to drop?"))
                     if word2 in Character.ItemCheck():
@@ -38,6 +45,9 @@ def InputCheck(Input):
                         break
                 elif word1 == "quit":
                     GameEnded = True
+                    break
+                elif word1 == "help":
+                    print("You can enter these commands : ",AvaliableCommands)
                     break
             else:
                 print("Unknown Command")
@@ -193,16 +203,22 @@ def ItemUsing(word2):
 the dust which is coating the porch is nowhere to be seen, it makes you feel uneasy as
 someone else might have come through or still maintains this room, the hidden room behind the bookshelf doesn't help either.
                     """
-                if (i.name == "key"):
+                elif (i.name == "key"):
                     CurrentRoom.items.append(Item("lighter",lighterDescription,lighterUse))
                     CurrentRoom.description = """ in a large room there is chairs with a fireplace in the corner of the room, It seems like this would
 have been a gathering room or a living room, ,the large lockbox is opened and is where you found the lighter.
                     """
-                if (i.name == "lighter"):
+                elif (i.name == "lighter"):
                     CurrentRoom.exits.append([1,3])
                     CurrentRoom.description = """ standing in the middle of what looks like a dining room due to the large table in the center of the room
 all of the candles are lit and revealed a hidden trap door.
                     """
+                elif (i.name == "knife"):
+                    Ending = open("Ending.txt","r")
+                    print (Ending.read())
+                    Ending.close()
+                    GameEnded == True
+
     else:
         print("Using this item has no effect.")
 
@@ -210,7 +226,10 @@ print(StartingStory)
 Character = Character([Item("",Placeholder,Placeholder)],0,0)
 CharacterPosition = [0,0]
 
-while (GameEnded == False):
+while True:
 
     UserInput = str(input("Please enter a command : "))
     InputCheck(UserInput.lower())
+    if (GameEnded == True):
+        print("Game Ended, Thanks for playing!")
+        break

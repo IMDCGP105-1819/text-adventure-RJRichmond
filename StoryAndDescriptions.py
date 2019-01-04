@@ -16,14 +16,7 @@ vibe. Everything is clean and kept in a good manner, there is pots and pans on t
 It's almost like someone is still uses this room often. You see a bookcase at the edge of the room, it has an empty picture frame
 sitting on it.
 """
-Ending = """
-As the blood is dripping from your hand; hitting the floor, it seems your insanity starts to escape you. Visions start to flood your
-head of things you have never seen before. Then your eyes become heavy and you fall to the ground. After what seems like an lifetime you
-become conscious and you can feel your self being dragged however you don't have the energy to fight it. You begin to close your eyes and
-embrace it once more. When you awake once more you are at a road, out of forest. You realise it must be a dream from being exhausted.
 
-But the scar remains...
-"""
 #Rooms
 StartingRoomDescription = """ Outside the rundown building looking ancient with vines seeping out of every crack,
 it looks as no one has been here in generations as nature has taken its toll on it. The door to the house is to the north.
