@@ -1,8 +1,9 @@
-from Classes import *
-from StoryAndDescriptions import *
+from Classes import * # All Classes Come from here
+from StoryAndDescriptions import * # All descriptions and story from here.
+# Here I am importing from the other python files I am using.
 
 GameEnded = False
-Rooms = []
+Rooms = [] #The list will contain all of the rooms.
 #x 1 east -1 west y 1 north -1 south
 Rooms.append(Room([Item("",Placeholder,Placeholder)],0,0,[[0,1]],StartingRoomDescription,"","OutsideHouse")) # Starting room / Outside House
 Rooms.append(Room([Item("picture",PictureDescription,PictureUse),Item("",Placeholder,Placeholder)],0,1,[[-1,1],[0,0],[0,2]],PorchDescription,"","Porch")) # Porch
@@ -12,20 +13,24 @@ Rooms.append(Room([Item("",Placeholder,Placeholder)],0,2,[[0,1],[1,2]],LivingRoo
 Rooms.append(Room([Item("",Placeholder,Placeholder)],1,2,[[0,2]],DiningRoomDescription,"lighter","Dining Room")) # Dining Room
 Rooms.append(Room([Item("",Placeholder,Placeholder),Item("",Placeholder,Placeholder)],1,3,[[2,3]],CellerDescription,"","Celler")) # Celler
 Rooms.append(Room([Item("",Placeholder,Placeholder)],2,3,[[1,3]],CaveDescription,"knife","Cave enterance")) # Cave Enterance
-
+# Here I am appending all of the rooms to the list using the class room and then giving them the values needed so location on x and y, items (using the item class), the rooms description
+# Any item which has a use in that room and the name.
 def InputCheck(Input):
-    CurrentRoom = TheRoom(Character.positionx,Character.positiony)
-    AvaliableCommands = ["move", "check", "use", "pickup","drop","help","quit"]
-    Command = Input.split()
-    for i in Command:
+    CurrentRoom = TheRoom(Character.positionx,Character.positiony)                  # This is setting the current room using "TheRoom" function (this returns the room which is equal to the players current x and y position).
+    AvaliableCommands = ["move", "check", "use", "pickup","drop","help","quit"]     # All commands the player can input are here
+    Command = Input.split()                                                         # Spliting user inputs at each word. Then I will make variables equal to each of the words the user inputted later on.
+    for i in Command:                                                               # Starts a loop which runs for the number of words in the user input
         if (len(Command) == 1):
+# This is where I have split my user input into two, I decided earlier on that the user could either input one word for more simple responses or input two to do something more specific.
             word1 = (Command[0])
             if (word1 in AvaliableCommands):
+# Here I am checking word1 (The first word in user inputted) against the avaliable commands list and then if it in equal to a word in that list. It will go through a check to see which command it is equal to.
                 if word1 == "move":
                     word2 = (str(input("Enter a direction : "))).lower()
-                    Move(word1,word2)
+# If the first word is equal to move then it gets a direction (a second word) stored in word2.
+                    Move(word1,word2)                                               # Starts the move function taking both word variables.
 
-                    break
+                    break                                                           # Everytime I am using break it is stopping the loop.
                 elif word1 == "check":
                     print (CurrentRoom)
                     print ("To check something specific please use : Check [what you would like to check]")
@@ -175,7 +180,7 @@ def ItemDrop(word2):
             Character.itemsHeld.remove(i)
             break
 
-        
+
 
 def ItemUsing(word2):
     CurrentRoom = TheRoom(Character.positionx,Character.positiony)
