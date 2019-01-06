@@ -37,7 +37,7 @@ def InputCheck(Input):
                 elif word1 == "check":
 # If the word which is inputted is equal to "check", since the user hasn't inputted any specific object it checks the room by default. Printing the CurrentRoom's description.
                     print (CurrentRoom)
-                    print ("To check something specific please use : Check [what you would like to check] , You can also checking your inventory using : Check inv")
+                    print ("You can also check these things : Room, inv (inventory) or a specific item (in your inventory or the room). Using : check [what you want to check] !")
                     break
                 elif word1 == "use":
 # If the first word is equal to "use, it then asks for a second word so what do you want to use and then if the word which they inputted is in the player inventory (Itemcheck), it will then perform the function "ItemUsing".
@@ -112,8 +112,12 @@ def InputCheck(Input):
                     elif word2 in Character.ItemCheck():
                         ItemCheck(word2);                                           # Or if the word is in the characters current inventory it then performs the item check function.
                         break
+                    elif word2 in CurrentRoom.ItemsInRoom():                        # If the word is equal to an item in the current rooms item list then they can also check that item using RoomItemCheck.
+                        RoomItemCheck(word2)
+                        break
                     else:
                         print("You cannot check this!")                             # Lastly if the word doesn't equal any of these then it tells the player they can't check what they are trying to.
+                        print("You can check these things : Room, inv (inventory) or a specific item (in your inventory or the room). Using : check [what you want to check] !")
                         break
 
                 elif word1 == "pickup":                                             # This does the same as checking an item with the one word input but doesn't need to take in another word.
@@ -150,6 +154,10 @@ def InputCheck(Input):
                         break
                 elif (word1 == "quit"):                                             # Finally this works exactly the same as quiting using one word, as the second word is not needed.
                     GameEnding();
+                elif word1 == "help":
+#This works exactly the same as the one word equivilant.
+                    print("You can enter these commands : ",AvaliableCommands)
+                    break
 
             else:                                                                   # If the word is not in the avaliable commands then it will print saying that its an unknown command
                 print("Unknown Command")
@@ -194,6 +202,7 @@ def Move(word1,word2):
             Character.positiony = CurrentRoom.positiony
     else:
         print("You have not entered a direction")
+        print("You can enter these directions : ",Directions )
 # "TheRoom" function uses a for loop to check all of the rooms in room list and checks to see if any of them are equal to the players positions and returns the room which is.
 # This is function is what I used to update which room the player is in.
 def TheRoom(positionx,positiony):
@@ -204,6 +213,13 @@ def TheRoom(positionx,positiony):
 # This function loops for each item in the players inventory and if the second word (word 2) is equal to the items name then it prints its description.
 def ItemCheck(word2):
     for item in Character.itemsHeld:
+        if (word2 == str(item.name)):
+            print (item.itemDesc)
+# This function works the same as the item check however it is used for checking items in the current room, for this it needs to get the currentroom to check which items,
+# are in that room, then it finds the item with the same name and the word inputted and prints the description
+def RoomItemCheck(word2):
+    CurrentRoom = TheRoom(Character.positionx,Character.positiony)
+    for item in CurrentRoom.items:
         if (word2 == str(item.name)):
             print (item.itemDesc)
 
