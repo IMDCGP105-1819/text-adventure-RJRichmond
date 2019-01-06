@@ -16,6 +16,8 @@ Rooms.append(Room([Item("",Placeholder,Placeholder)],2,3,[[1,3]],CaveDescription
 # Here I am appending all of the rooms to the list using the class room and then giving them the values needed so location on x and y, items (using the item class), the rooms description
 # Any item which has a use in that room and the name.
 
+
+# This is the largest function which I use and it manages all of the user input.
 def InputCheck(Input):
     CurrentRoom = TheRoom(Character.positionx,Character.positiony)                  # This is setting the current room using "TheRoom" function (this returns the room which is equal to the players current x and y position).
     AvaliableCommands = ["move", "check", "use", "pickup","drop","help","quit"]     # All commands the player can input are here
@@ -158,7 +160,7 @@ def InputCheck(Input):
 # With the input system I decided I would take in the two different kinds of inputs being one word and two words. As I thought that it would allow the player to type in commands in the way they deemed were most comfortable.
 # Thats why some of the sections repeat.
 
-#-- Functions
+#-- Action Functions
 
 def Move(word1,word2):
     Directions = ["north","n","east","e","south","s","west","w"]                    # All of the possible words which are used for directions.

@@ -1,11 +1,13 @@
-#story
+# This file is where I store all of the story text variables and also the description variables, keeping them stored here allowed me to manage.
+# All of the text very easily, since it is all in one place.
+
 StartingStory = """
 You arrive outside of a rundown building, you don't remember the way you got here since you got lost in the woods
 while asking for directions on the closest town. The building looks ancient with vines seeping out of every crack,
 it looks as no one has been here in generations as nature has taken its toll on it.
 """
 
-#Rooms
+#--  Room descriptions
 StartingRoomDescription = """ Outside the rundown building looking ancient with vines seeping out of every crack,
 it looks as no one has been here in generations as nature has taken its toll on it. The door to the house is to the north.
 """
@@ -68,7 +70,7 @@ CaveDescription = """ in the middle of the strange cave, the room is very humid 
 One of the etchings catch your eye, its beneath an alter of some sort and it feels like it is calling out to you. It looks like a
 ritual and one of etching is a knife.
 """
-#Items Desc
+#-- Items Desc
 PictureDescription = """
 You wipe away the dust on the picture to find that a women must have lived here,
 the picture has yellowed with age.
@@ -106,4 +108,5 @@ knifeUse = """
 You slice your hand and let the blood drip onto the strange ritual, suddenly everything goes fuzzy your head starts to spin.
 """
 #Placeholder text
+# This is here since for the blank objects which I need to include for checks to work, they needed some text.
 Placeholder = ""
